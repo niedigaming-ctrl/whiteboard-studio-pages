@@ -5,29 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Whiteboard Studio</title>
     <style>
-:root { --bg:#101418; --card:#182027; --fg:#eaf1f6; --muted:#9bb0bf; --accent:#4aa3ff; --line:#26313a; }
+/* Eigenes Gerüst für Whiteboard Studio (16.9.2026).
+   Vorher teilten sich diese Seiten ein dunkles Stylesheet mit Reset Coach und
+   dem ADHS Planer — identischer Variablensatz, nur andere Farbwerte. Jetzt:
+   helles Papier mit feinem Raster, wie die Tafel in der App selbst. */
+:root {
+  --paper:#fbfcfd; --ink:#1b2430; --ink-soft:#5b6b7c; --rule:#dce4ec;
+  --mark:#1f6feb; --tint:#eef4fb; --grid:#eaeff5;
+}
 * { box-sizing:border-box; }
-body { margin:0; padding:2rem 1rem 4rem; background:var(--bg); color:var(--fg);
-  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
-main { max-width:44rem; margin:0 auto; }
-h1 { font-size:1.75rem; line-height:1.25; margin:0 0 .35rem; }
-h2 { font-size:1.1rem; margin:2.25rem 0 .5rem; color:var(--accent); }
-h3 { font-size:1rem; margin:1.5rem 0 .35rem; }
-.date { color:var(--muted); font-size:.9rem; margin:0 0 2rem; }
-a { color:var(--accent); }
-ul { padding-left:1.25rem; }
-li { margin:.3rem 0; }
-.lang { display:flex; gap:.5rem; margin:0 0 2rem; }
-.lang a { padding:.35rem .8rem; border:1px solid var(--line); border-radius:99px;
-  text-decoration:none; font-size:.9rem; background:var(--card); }
-hr { border:0; border-top:1px solid var(--line); margin:3rem 0; }
-footer { color:var(--muted); font-size:.85rem; margin-top:3rem; }
+html { -webkit-text-size-adjust:100%; }
+body {
+  margin:0; padding:0; color:var(--ink); background:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:28px 28px;
+  font:16px/1.7 ui-rounded,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+.sheet {
+  max-width:46rem; margin:2.5rem auto 5rem; background:#fff;
+  border:1px solid var(--rule); border-radius:18px;
+  box-shadow:0 1px 2px rgba(16,32,48,.04), 0 12px 32px rgba(16,32,48,.06);
+  padding:2.5rem 2rem 3rem;
+}
+h1 { font-size:1.9rem; line-height:1.2; margin:0 0 .4rem; letter-spacing:-.015em; }
+h2 {
+  font-size:1.05rem; margin:2.5rem 0 .6rem; padding-left:.7rem;
+  border-left:3px solid var(--mark); color:var(--ink);
+}
+h3 { font-size:1rem; margin:1.6rem 0 .3rem; color:var(--ink-soft); font-weight:600; }
+p { margin:.6rem 0; }
+.meta { color:var(--ink-soft); font-size:.9rem; margin:0 0 2rem; }
+a { color:var(--mark); text-underline-offset:2px; }
+ul { padding-left:1.2rem; }
+li { margin:.35rem 0; }
+.langs { display:flex; gap:.4rem; margin:0 0 1.8rem; flex-wrap:wrap; }
+.langs a {
+  padding:.3rem .85rem; border:1px solid var(--rule); border-radius:8px;
+  text-decoration:none; font-size:.88rem; background:var(--tint); color:var(--mark);
+}
+hr { border:0; border-top:1px dashed var(--rule); margin:3rem 0; }
+footer { color:var(--ink-soft); font-size:.85rem; margin-top:3rem;
+         border-top:1px solid var(--rule); padding-top:1rem; }
+@media (max-width:480px) { .sheet { margin:1rem; padding:1.75rem 1.25rem 2.5rem; }
+                           h1 { font-size:1.55rem; } }
     </style>
   </head>
   <body>
-    <main>
+    <main class="sheet">
       <h1>Whiteboard Studio</h1>
-      <p class="date">A digital whiteboard for iPad and Mac. No account, no cloud, no subscription.</p>
+      <p class="meta">A digital whiteboard for iPad and Mac. No account, no cloud, no subscription.</p>
       <ul>
         <li><a href="support.html">Support / Hilfe</a></li>
         <li><a href="privacy.html">Privacy Policy / Datenschutzerklärung</a></li>
